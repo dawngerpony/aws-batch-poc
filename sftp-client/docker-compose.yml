@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build: .
+    volumes:
+      - ./files:/files
+      - ./cmd.py:/bin/cmd.py
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - ./uploads:/home/foo/upload
+    ports:
+      - "2222:22"
+    command: foo:pass:1001
